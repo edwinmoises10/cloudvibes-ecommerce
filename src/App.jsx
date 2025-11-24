@@ -8,8 +8,9 @@ function App() {
       {/* Navbar */}
       <Navbar />
       {/* ItemList */}
-      <ItemListContainer title="Welcome to CloudVibes" />
-      
+      <ItemListContainer 
+      title="Welcome to CloudVibes" 
+      />
     </>
   );
 }
