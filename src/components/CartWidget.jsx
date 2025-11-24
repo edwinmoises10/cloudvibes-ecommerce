@@ -1,6 +1,6 @@
 import { ShoppingCart } from "lucide-react";
 
-const CarWidget = () => {
+const CartWidget = () => {
   return (
 
     <ShoppingCart className="  fill-amber-300"></ShoppingCart>
@@ -8,4 +8,4 @@ const CarWidget = () => {
   )
 };
 
-export default CarWidget;
+export default CartWidget;
