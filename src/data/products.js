@@ -17,7 +17,7 @@ const products = [
     price: 59.99,
     category: "Xbox",
     genre: "Shooter",
-    stock: 8,
+    stock: 10,
     brand: "Xbox Game Studios",
     img: "https://cdn.akamai.steamstatic.com/steam/apps/1240440/library_600x900.jpg",
     description: "El regreso del Jefe Maestro con la campaña más amplia hasta la fecha y un combate evolucionado.",
