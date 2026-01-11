@@ -32,6 +32,8 @@ export default function ItemDetailsProduct() {
             {productDetail.title}
           </h1>
 
+          <h2 className="text-lg font-bold text-gray-800 leading-tight line-clamp-2 min-h-12">Category: {productDetail.category}</h2>
+
           <div className=" font-extrabold text-black">
             {productDetail.description}
           </div>
