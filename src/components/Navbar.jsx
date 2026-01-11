@@ -189,11 +189,12 @@ export default function Navbar() {
 
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <NavLink to="/">
-            <img
+          <h1 className="text-4xl">MOCHETE STORE</h1>
+            {/* <img
               src="../src/assets/logoCloudVibes4.png"
               alt="CloudVibes Logo"
               className="h-12 w-auto"
-            />
+            /> */}
           </NavLink>
         </div>
 

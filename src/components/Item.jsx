@@ -30,7 +30,7 @@ export default function Item(props) {
 
         <div className="mt-auto flex gap-2 pt-2">
             {/* Detalle  */}
-          <Link to={`/products/${id}`} className="flex-1">
+          <Link to={`/details/${id}`} className="flex-1">
             <button className="w-full py-2 px-3 text-sm font-semibold text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
               Details
             </button>

@@ -16,7 +16,19 @@ export function getBDData() {
 
 //Detalles Products
 
-export function getDBProductsDetails(){
+export function getDBProductsDetails(value){
+    return new Promise ((resolve, reject)=>{
+        const detailsProduct = products.find((d)=> d.id === Number(value))
+       
+    
+        setTimeout(() => {
+            if(detailsProduct){
+                resolve(detailsProduct)
+            }else{
+                reject(new Error("Product Not Found"))
+            }
+        }, 2000);
+    })
 
     
 
