@@ -25,7 +25,6 @@ export default function Item(props) {
         </h1>
 
 
-        {/* Precio destacado */}
         <div className="text-2xl font-black text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500">
           ${price}
         </div>
@@ -38,7 +37,6 @@ export default function Item(props) {
             </button>
           </Link>
 
-          {/* ADD */}
           <Link to="/" className="flex-1">
             <button className="w-full py-2 px-3 text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-gray-800 transition-colors shadow-lg shadow-orange-500/20 active:scale-95">
               Add +

@@ -36,7 +36,6 @@ export default function ItemDetailsProduct() {
 
             <div className="w-400">
               <div className="p-6 flex flex-col gap-3 flex-1 bg-linear-to-b from-slate-900 via-slate-900 to-slate-950">
-                {/* Títulos: Blanco para máximo contraste */}
                 <h1 className="text-4xl font-bold text-white leading-tight line-clamp-2 min-h-12 tracking-wide">
                   {productDetail.title}
                 </h1>
@@ -48,7 +47,6 @@ export default function ItemDetailsProduct() {
                   </span>
                 </h2>
 
-                {/* Descripción: Gris claro (Slate-300) */}
                 <div className="text-sm font-medium text-slate-300 line-clamp-3">
                   {productDetail.description}
                 </div>
