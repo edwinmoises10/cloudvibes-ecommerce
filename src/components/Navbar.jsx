@@ -2,7 +2,7 @@ import CartWidget from "./CartWidget";
 import { useState } from "react";
 import { Search } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import {logo} from "../assets/logoCloudVibesGame.png"
+import logo from "../assets/logoCloudVibesGame.png"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
