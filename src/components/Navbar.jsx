@@ -2,6 +2,7 @@ import CartWidget from "./CartWidget";
 import { useState } from "react";
 import { Search } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import {logo} from "../assets/logoCloudVibesGame.png"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -189,12 +190,11 @@ export default function Navbar() {
 
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <NavLink to="/">
-          <h1 className="text-4xl">MOCHETE STORE</h1>
-            {/* <img
-              src="../src/assets/logoCloudVibes4.png"
+            <img
+              src={logo}
               alt="CloudVibes Logo"
-              className="h-12 w-auto"
-            /> */}
+              className="h-35 w-auto"
+            />
           </NavLink>
         </div>
 

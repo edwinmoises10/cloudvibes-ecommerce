@@ -4,7 +4,7 @@ export default function Item(props) {
   const { id, img, title, price, category, stock, brand, description, genre } = props;
 
   return (
-  <div className="group relative w-72 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-out border border-gray-100 overflow-hidden flex flex-col">
+  <div className="group relative w-72 bg-slate-900  rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-out border border-gray-100 overflow-hidden flex flex-col">
       
       <div className="relative h-48 w-full overflow-hidden">
         <img 
@@ -17,14 +17,16 @@ export default function Item(props) {
         </div>
       </div>
 
-      <div className="p-5 flex flex-col gap-3 flex-1 bg-linear-to-b from-white via-orange-50/30 to-white">
+      <div className="p-5 flex flex-col gap-3 flex-1 bg-linear-to-b from-slate-900 via-slate-900 to-slate-950">
         
-        <h1 className="text-lg font-bold text-gray-800 leading-tight line-clamp-2 min-h-12">
-          {title}
+        <h1 className="text-lg font-bold text-white leading-tight  line-clamp-2 min-h-12">
+          {title} - <span className="text-cyan-400">{category}</span>
+
         </h1>
 
+
         {/* Precio destacado */}
-        <div className="text-2xl font-extrabold text-orange-600">
+        <div className="text-2xl font-black text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500">
           ${price}
         </div>
 
@@ -38,7 +40,7 @@ export default function Item(props) {
 
           {/* ADD */}
           <Link to="/" className="flex-1">
-            <button className="w-full py-2 px-3 text-sm font-semibold text-white bg-black rounded-lg hover:bg-gray-800 transition-colors shadow-lg shadow-orange-500/20 active:scale-95">
+            <button className="w-full py-2 px-3 text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-gray-800 transition-colors shadow-lg shadow-orange-500/20 active:scale-95">
               Add +
             </button>
           </Link>

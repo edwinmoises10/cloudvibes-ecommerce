@@ -10,16 +10,18 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
+
+
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
-          
-          {/* <Route path="/category/:categoryID" /> */}
-          <Route path="/details/:itemID" element={<ItemDetailsProduct/>} />
 
-          <Route path="*" element={<Error404/>} />
+          <Route path="/details/:itemID" element={<ItemDetailsProduct />} />
+          <Route path="/category/:categoryID" element={<ItemListContainer/>} />
+
+
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
-      
     </>
   );
 }

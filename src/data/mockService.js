@@ -10,7 +10,7 @@ export function getBDData() {
       } else {
         reject(new Error("No Connection with DB"));
       }
-    }, 200);
+    }, 2000);
   });
 }
 
@@ -31,5 +31,23 @@ export function getDBProductsDetails(value){
     })
 
     
+
+}
+
+//Category Section 
+
+export function getCategoryData(value1){
+    return new Promise((resolve, reject)=>{
+        const categoryProduct = products.filter((e)=> e.category === value1)
+        setTimeout(() => {
+
+            if(categoryProduct){
+                resolve(categoryProduct)
+            }else{
+                reject(new Error("Category Not Found"))
+            }
+            
+        }, 1000);
+    })
 
 }
