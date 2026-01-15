@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 export default function Item(props) {
   const { id, img, title, price, category, stock, brand, description, genre } = props;
 
+  const stockBadgeColor = stock <= 15 ? "text-red-500": "text-white"
+  const stockMessage = stock <= 15 ? "Low Stock" : "Stock"
+
+
   return (
   <div className="group relative w-72 bg-slate-900  rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-out border border-gray-100 overflow-hidden flex flex-col">
       
@@ -12,8 +16,8 @@ export default function Item(props) {
           src={img} 
           alt={title} 
         />
-        <div className="absolute top-2 right-2 bg-black/70 backdrop-blur-sm text-white text-xs font-bold px-2 py-1 rounded-full">
-          Stock: {stock}
+        <div className={`absolute top-2 right-2 bg-black/70 backdrop-blur-sm ${stockBadgeColor} text-xs font-bold px-2 py-1 rounded-full`}>
+          {stockMessage}: {stock}
         </div>
       </div>
 
@@ -37,11 +41,7 @@ export default function Item(props) {
             </button>
           </Link>
 
-          <Link to="/" className="flex-1">
-            <button className="w-full py-2 px-3 text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-gray-800 transition-colors shadow-lg shadow-orange-500/20 active:scale-95">
-              Add +
-            </button>
-          </Link>
+      
         </div>
       </div>
     </div>

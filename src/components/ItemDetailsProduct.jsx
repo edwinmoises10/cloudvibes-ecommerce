@@ -1,19 +1,27 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getDBProductsDetails } from "../data/mockService";
 import LoadingUI from "./LoadingUI";
 import Count from "./Count";
+import cartContext from "../context/cartContext";
 
 export default function ItemDetailsProduct() {
   const { itemID } = useParams();
-
   const [productDetail, setProductDetails] = useState([]);
+  const {addItemToCart} = useContext(cartContext)
 
   useEffect(() => {
     getDBProductsDetails(itemID)
       .then((e) => setProductDetails(e))
       .catch((err) => err);
   }, []);
+
+  function onItemsSelected(value){
+    console.log(`se agrego ${value} items al carrito  de ${productDetail.title}`)
+    addItemToCart(productDetail, value)
+  }
+
+
 
   return (
     <>
@@ -55,16 +63,8 @@ export default function ItemDetailsProduct() {
                   ${productDetail.price}
                 </div>
 
-                <div className="mt-auto flex gap-2 pt-2">
-                  <Link to="#">
-                    <button className="py-2 px-6 text-sm font-bold text-slate-900 bg-white rounded-lg hover:bg-cyan-50 hover:text-cyan-900 transition-all shadow-[0_0_15px_rgba(255,255,255,0.1)] active:scale-95">
-                      Add to Cart
-                    </button>
-                  </Link>
-
-                  <Link to="#">
-                    {<Count/>}
-                  </Link>
+                <div className="mt-auto flex flex-row items-center gap-2 pt-2">
+                  {<Count onItemsSelected={onItemsSelected} stock={productDetail.stock} />}
                 </div>
               </div>
             </div>

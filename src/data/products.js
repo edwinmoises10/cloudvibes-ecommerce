@@ -6,7 +6,7 @@ const products = [
     price: 69.99,
     category: "PS5",
     genre: "Action-Adventure",
-    stock: 12,
+    stock: 1,
     brand: "PlayStation Studios",
     img: "https://cdn.akamai.steamstatic.com/steam/apps/2322010/library_600x900.jpg",
     description: "La secuela aclamada por la crítica, un viaje épico a través de la mitología nórdica junto a Kratos y Atreus.",
