@@ -22,8 +22,7 @@ export default function CheckoutCount(props) {
 
   return (
     <>
-      <div className=" flex gap-3 px-1 py-1 border-2 border-indigo-500 rounded-3xl  ">
-        {item.countSelected === 1 ? (
+<div className="flex items-center justify-center gap-2 px-2 py-1 border-2 border-indigo-500 rounded-3xl w-fit">        {item.countSelected === 1 ? (
           <button onClick={() => removeItem(item.id)}>
             <svg className="w-3 h-3 group fill-black">
               <use href="/sprite.svg#trash" />

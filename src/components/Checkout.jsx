@@ -7,12 +7,12 @@ export default function Checkout() {
   const { cart } = useContext(cartContext);
 
   const tdHead = "p-3 text-gray-500 text-center font-semibold";
-  const tdBody = "p-3 text-gray-500 text-left font-semibold font-mono";
+  const tdBody = "p-3 text-gray-500 text-center font-semibold font-mono";
 
   return (
     <>
       <div className="flex justify-center items-center p-5">
-        <table className="border-collapse  w-80% shadow-sm rounded">
+        <table className="border-collapse  w-full shadow-sm rounded">
           <thead className="bg-gray-100">
             <tr className="">
               <td className={tdHead}>ID</td>
@@ -29,7 +29,7 @@ export default function Checkout() {
           <tbody>
             {cart.map((item) => (
               <tr key={item.id} className="hover:bg-gray-50 transition-colors">
-                <td className={tdHead}>ID:{item.id}</td>
+                <td className={tdBody}>ID:{item.id}</td>
                 <td className="p-3">
                   {item.img ? (
                     <Link to={`/details/${item.id}`}><img
@@ -42,11 +42,11 @@ export default function Checkout() {
                     "NO DATA"
                   )}
                 </td>
-                <td className={tdHead}>
+                <td className={tdBody}>
                   <Link to={`/details/${item.id}`}>{item.title}</Link>
                 </td>
-                <td className={tdHead}>{item.price}</td>
-                <td className={tdHead}>{<CheckoutCount item={item} />}</td>
+                <td className={tdBody}>$ {item.price}</td>
+                <td className={tdBody}>{<CheckoutCount item={item} />}</td>
               </tr>
             ))}
           </tbody>

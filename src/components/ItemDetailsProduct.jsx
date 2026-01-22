@@ -14,7 +14,7 @@ export default function ItemDetailsProduct() {
     getDBProductsDetails(itemID)
       .then((e) => setProductDetails(e))
       .catch((err) => err);
-  }, []);
+  }, [itemID]);
 
   function onItemsSelected(value){
     console.log(`se agrego ${value} items al carrito  de ${productDetail.title}`)

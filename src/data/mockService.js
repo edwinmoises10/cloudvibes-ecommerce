@@ -10,7 +10,7 @@ export function getBDData() {
       } else {
         reject(new Error("No Connection with DB"));
       }
-    }, 2000);
+    }, 1000);
   });
 }
 
@@ -27,7 +27,7 @@ export function getDBProductsDetails(value){
             }else{
                 reject(new Error("Product Not Found"))
             }
-        }, 2000);
+        }, 1000);
     })
 
     
