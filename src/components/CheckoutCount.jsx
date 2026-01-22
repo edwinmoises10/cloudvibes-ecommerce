@@ -24,7 +24,7 @@ export default function CheckoutCount(props) {
     <>
 <div className="flex items-center justify-center gap-2 px-2 py-1 border-2 border-indigo-500 rounded-3xl w-fit">        {item.countSelected === 1 ? (
           <button onClick={() => removeItem(item.id)}>
-            <svg className="w-3 h-3 group fill-black">
+            <svg className="w-3 h-3 group fill-white">
               <use href="/sprite.svg#trash" />
             </svg>
           </button>
@@ -33,7 +33,7 @@ export default function CheckoutCount(props) {
             onClick={handleMinus}
             className="group transition-colors  disabled:cursor-not-allowed "
           >
-            <svg className="w-3 h-3 group fill-black">
+            <svg className="w-3 h-3 group fill-white">
               <use href="/sprite.svg#minus" />
             </svg>
           </button>
@@ -48,7 +48,7 @@ export default function CheckoutCount(props) {
           disabled={item.countSelected === item.stock}
           className="group transition-colors  disabled:cursor-not-allowed "
         >
-          <svg className=" w-3 h-3 group fill-black group-disabled:fill-red-300 ">
+          <svg className=" w-3 h-3 group fill-white group-disabled:fill-red-300 ">
             <use href="/sprite.svg#plus" />
           </svg>
         </button>
