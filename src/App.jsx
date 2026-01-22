@@ -5,11 +5,15 @@ import "./styles/App.css";
 import Error404 from "./components/Error404";
 import ItemDetailsProduct from "./components/ItemDetailsProduct";
 import { CartProvider } from "./context/cartContext";
+import Checkout from "./components/Checkout";
+
+
 
 function App() {
   return (
     <>
       <BrowserRouter>
+      
         <CartProvider>
           <Navbar />
           <Routes>
@@ -20,7 +24,7 @@ function App() {
               path="/category/:categoryID"
               element={<ItemListContainer />}
             />
-
+            <Route path="/cart" element={<Checkout />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </CartProvider>

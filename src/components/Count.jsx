@@ -15,6 +15,7 @@ export default function Count(props) {
 
         <span className="text-red-500 font-bold text-2xl">Out of Stock</span>
       </div>
+      
     );
   }
 
