@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getDBProductsDetails } from "../data/mockService";
+import { getDBProductsDetails } from "../data/firestore";
 import LoadingUI from "./LoadingUI";
 import Count from "./Count";
 import cartContext from "../context/cartContext";

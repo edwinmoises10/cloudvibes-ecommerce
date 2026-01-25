@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
-import { getBDData, getCategoryData } from "../data/mockService";
 import Item from "./Item";
 import LoadingUI from "./LoadingUI";
 import { useParams } from "react-router-dom";
+import { getBDData, getCategoryData, getGenreData } from "../data/firestore";
+
 
 const ItemListContainer = () => {
   const [dbProducts, setDbProducts] = useState([]);
-  const { categoryID } = useParams();
+  const { categoryID, genreID } = useParams();
 
   useEffect(() => {
     if (categoryID) {
       getCategoryData(categoryID)
         .then((d) => setDbProducts(d))
         .catch((err) => err);
+    } else if (genreID) {
+      getGenreData(genreID)
+        .then((d) => setDbProducts(d))
+        .catch((e) => e);
     } else {
       getBDData()
         .then((data) => setDbProducts(data))
         .catch((err) => err);
     }
-  }, [categoryID]);
+  }, [categoryID, genreID]);
 
   return (
     <>

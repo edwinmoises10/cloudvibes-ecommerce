@@ -12,10 +12,10 @@ export default function Navbar() {
 
   return (
     <>
-      <span className="flex font-bold bg-black py-3 px-3 items-center text-white justify-center">
+      <span className=" flex font-bold bg-black py-3 px-3 items-center text-white justify-center">
         Video Game Store{" "}
       </span>
-      <header className="relative flex py-3 px-6 items-center justify-between  bg-white">
+      <header className="sticky top-0 z-50  flex py-3 px-6 items-center justify-between  bg-white">
         <nav className="flex items-center gap-8">
           <div className="relative">
             {isOpen && (
@@ -199,7 +199,7 @@ export default function Navbar() {
         </div>
 
         {/* SearchBar + Cart */}
-        <div className="flex flex-row items-center gap-4">
+        <div className="flex flex-row items-center gap-2">
           <div className="relative w-full max-w-xs hidden md:block">
             {" "}
             <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
@@ -212,7 +212,7 @@ export default function Navbar() {
             />
           </div>
 
-          <button className="pl-4 border-l border-gray-200 cursor-pointer hover:opacity-80 transition-opacity">
+          <button className="flex flex-row justify-center items-center pl-12 border-l border-gray-200 cursor-pointer hover:opacity-80 transition-opacity">
             <CartWidget />
           </button>
         </div>

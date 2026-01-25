@@ -2,14 +2,27 @@ import { useContext } from "react";
 import cartContext from "../context/cartContext";
 import CheckoutCount from "./CheckoutCount";
 import { Link } from "react-router-dom";
+import { createBuyOrder } from "../data/firestore";
 
 export default function Checkout() {
-  const { cart, getTotal, getItemSubTotal } = useContext(cartContext);
+  const { cart, getTotal, getItemSubTotal, clearCart } =
+    useContext(cartContext);
 
   const tdHead =
     "p-4 text-slate-300 text-center font-bold tracking-wider border-b border-slate-700 uppercase text-xs";
   const tdBody =
     "p-4 text-slate-400 font-mono text-center border-b border-slate-800";
+
+    function handleCheckout(){
+      // Validar items usuario
+      const buyOrder = {
+        buyer: "Moises",
+        items: cart,
+        total: getTotal(),
+        date: new Date()
+      }
+      createBuyOrder(buyOrder)
+    }
 
   return (
     <div className="flex flex-col gap-6 w-full max-w-6xl mx-auto p-5">
@@ -60,7 +73,7 @@ export default function Checkout() {
                     to={`/details/${item.id}`}
                     className="hover:text-purple-400 transition-colors"
                   >
-                    {item.title}
+                    {item.title} - {item.category}
                   </Link>
                 </td>
 
@@ -96,14 +109,13 @@ export default function Checkout() {
           </span>
         </div>
 
-        <div className="flex flex-row gap-2 justify-between">
-          <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-purple-900/20 transition-all active:scale-95 flex justify-center items-center gap-2">
-            <span>Finalizar Compra</span>
+        <div className="flex flex-row gap-2 justify-between items-center">
+          <button onClick={handleCheckout} className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-purple-900/20 transition-all active:scale-95 ">
+            <span >Finalizar Compra</span>
           </button>
-          <div className="">
-            <button className="text-white flex flex-row items-center gap-2">
-              <span>Clear Cart</span>
-              <svg className="w-3 h-3 group fill-white">
+          <div className="pr-10">
+            <button onClick={() => clearCart()}>
+              <svg className="w-5 h-5 group fill-red-300">
                 <use href="/sprite.svg#trash" />
               </svg>
             </button>

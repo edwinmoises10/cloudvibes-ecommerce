@@ -6,14 +6,18 @@ import Error404 from "./components/Error404";
 import ItemDetailsProduct from "./components/ItemDetailsProduct";
 import { CartProvider } from "./context/cartContext";
 import Checkout from "./components/Checkout";
+import { getBDData } from "./data/firestore";
 
 
 
 function App() {
+
+  getBDData()
+  
   return (
     <>
+  
       <BrowserRouter>
-      
         <CartProvider>
           <Navbar />
           <Routes>
@@ -24,6 +28,7 @@ function App() {
               path="/category/:categoryID"
               element={<ItemListContainer />}
             />
+            <Route path="/genre/:genreID" element={<ItemListContainer/>} />
             <Route path="/cart" element={<Checkout />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
