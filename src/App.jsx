@@ -6,17 +6,14 @@ import Error404 from "./components/Error404";
 import ItemDetailsProduct from "./components/ItemDetailsProduct";
 import { CartProvider } from "./context/cartContext";
 import Checkout from "./components/Checkout";
-import { getBDData } from "./data/firestore";
+import Footer from "./components/Footer";
 
 
 
 function App() {
 
-  getBDData()
-  
   return (
     <>
-  
       <BrowserRouter>
         <CartProvider>
           <Navbar />
@@ -32,6 +29,7 @@ function App() {
             <Route path="/cart" element={<Checkout />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
+          <Footer/>
         </CartProvider>
       </BrowserRouter>
     </>

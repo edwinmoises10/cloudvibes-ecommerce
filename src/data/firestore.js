@@ -7,8 +7,12 @@ import {
   getDocs,
   getFirestore,
   query,
+  updateDoc,
   where,
 } from "firebase/firestore/lite";
+
+import products from "./products";
+import Swal from "sweetalert2";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDum_2FucLYEb_w5947HPGiExtodFRfZAE",
@@ -64,6 +68,11 @@ export async function getCategoryData(categoryID) {
   return dataDocs;
 }
 
+export async function updateStockinFirebase() {
+  const documentStock = collection(db, "products");
+  const q = query(documentStock, where("stock"));
+}
+
 // getGenreData
 export async function getGenreData(genreID) {
   const documentCategory = collection(db, "products");
@@ -79,8 +88,52 @@ export async function getGenreData(genreID) {
 export async function createBuyOrder(buyOrderData) {
   // write data in firestore
   const collectionRef = collection(db, "orders");
-  const docRef = await addDoc(collectionRef,  buyOrderData );
-  alert(`Order Created : Ticket ID : ${docRef.id}`);
+  const docRef = await addDoc(collectionRef, buyOrderData);
+  Swal.fire({
+    title: "Thanks for your Order!",
+    text: `Order: ${docRef.id} `,
+    icon: "success",
+  });
 
   return docRef;
+}
+
+export async function exportProductsToFirestore() {
+  // const productsContainer = products.map((e)=> addDoc(e))
+  // ForEach no funciona bien con sincronia
+  const collectionRef = collection(db, "products");
+
+  // For of
+  for (let items of products) {
+    delete items.id;
+    const docRef = await addDoc(collectionRef, items);
+    console.log("ID Products", docRef.id);
+    //  <button className="p-2 bg-amber-400 cursor-pointer hover:bg-blue-700"   onClick={exportProductsToFirestore}>
+    //       Upload Data to Firestore
+    //     </button>
+  }
+}
+
+//Update Stock in Firestore
+
+export async function updateStockItem(productID, itemsSelected) {
+  const stockRef = doc(db, "products", productID);
+  const stockSnapshot = await getDoc(stockRef);
+  const stockData = stockSnapshot.data();
+
+  if (!stockData) {
+    console.log("Collection not found");
+  }
+
+  if (stockData.stock >= itemsSelected) {
+    const updateStock = stockData.stock - itemsSelected;
+
+    await updateDoc(stockRef, {
+      stock: updateStock,
+    });
+    console.log("Se actualizo Stock", updateStock);
+  }else{
+    console.log("Stock insuficiente");
+    
+  }
 }

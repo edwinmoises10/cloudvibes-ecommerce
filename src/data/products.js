@@ -1,4 +1,4 @@
-const products = [
+export const products = [
   // --- BLOQUE 1: ÉXITOS GENERALES (ID 1-20) ---
   {
     id: 1,

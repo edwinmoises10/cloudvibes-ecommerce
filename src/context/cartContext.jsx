@@ -1,11 +1,16 @@
 import { createContext, useState } from "react";
 import Swal from "sweetalert2";
+import { updateStockItem } from "../data/firestore";
+import { useNavigate } from "react-router-dom";
+
 
 const cartContext = createContext({ cart: [] });
 
 const ContextProvider = cartContext.Provider;
 
 export function CartProvider({ children }) {
+  const navigate = useNavigate(); // 2. Inicializar el hook
+
   const [cart, setCart] = useState([]);
 
   const confirmButton = () => {
@@ -16,7 +21,7 @@ export function CartProvider({ children }) {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: 'Yes, empty it',
+      confirmButtonText: "Yes, empty it",
     }).then((result) => {
       if (result.isConfirmed) {
         setCart([]);
@@ -29,6 +34,24 @@ export function CartProvider({ children }) {
       }
     });
   };
+
+  async function updateStock() {
+    const checkDataStock = cart.map((e) =>
+      updateStockItem(e.id, e.countSelected),
+    );
+
+    const update = await Promise.all(checkDataStock);
+    if (update) {
+      setCart([]);
+      navigate("/")
+    }
+
+    console.log("Compra finalizada y stock descontado");
+  }
+
+  function clearCartBeforeBuy() {
+    updateStock();
+  }
 
   function addItemToCart(product, countSelected) {
     const checkProduct = cart.findIndex((e) => e.id === product.id);
@@ -92,6 +115,7 @@ export function CartProvider({ children }) {
         getTotal,
         clearCart,
         totalItemInCar,
+        clearCartBeforeBuy,
       }}
     >
       {children}

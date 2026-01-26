@@ -1,28 +1,49 @@
 import { useContext } from "react";
 import cartContext from "../context/cartContext";
 import CheckoutCount from "./CheckoutCount";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createBuyOrder } from "../data/firestore";
+import Swal from "sweetalert2";
 
 export default function Checkout() {
-  const { cart, getTotal, getItemSubTotal, clearCart } =
+  const { cart, getTotal, getItemSubTotal, clearCart, clearCartBeforeBuy } =
     useContext(cartContext);
 
+  const navigate = useNavigate(); // 2. Inicializar el hook
   const tdHead =
     "p-4 text-slate-300 text-center font-bold tracking-wider border-b border-slate-700 uppercase text-xs";
   const tdBody =
     "p-4 text-slate-400 font-mono text-center border-b border-slate-800";
 
-    function handleCheckout(){
-      // Validar items usuario
-      const buyOrder = {
-        buyer: "Moises",
-        items: cart,
-        total: getTotal(),
-        date: new Date()
-      }
-      createBuyOrder(buyOrder)
+  function handleCheckout() {
+    // Validar items usuario
+    const buyOrder = {
+      buyer: "Moises",
+      items: cart,
+      total: getTotal(),
+      date: new Date(),
+    };
+    if (cart.length > 0 && createBuyOrder(buyOrder)) {
+      clearCartBeforeBuy();
+    
+
+      console.log("Done ✅");
+    } else {
+      Swal.fire({
+        title: "Empty Car!",
+        text: "Your Cart is empty",
+        icon: "info",
+        showDenyButton: true,
+        showConfirmButton: false,
+        denyButtonColor: "#28a745",
+        denyButtonText: `Continue Shopping`,
+      }).then((result) => {
+        if (result.isDenied) {
+          navigate("/");
+        }
+      });
     }
+  }
 
   return (
     <div className="flex flex-col gap-6 w-full max-w-6xl mx-auto p-5">
@@ -79,7 +100,6 @@ export default function Checkout() {
 
                 <td className={`${tdBody} text-center`}>$ {item.price}</td>
 
-                {/* Corrección de centrado: Componente Count */}
                 <td className={tdBody}>
                   <div className="flex justify-center items-center">
                     <CheckoutCount item={item} />
@@ -110,8 +130,11 @@ export default function Checkout() {
         </div>
 
         <div className="flex flex-row gap-2 justify-between items-center">
-          <button onClick={handleCheckout} className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-purple-900/20 transition-all active:scale-95 ">
-            <span >Finalizar Compra</span>
+          <button
+            onClick={handleCheckout}
+            className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-purple-900/20 transition-all active:scale-95 "
+          >
+            <span>Finalizar Compra</span>
           </button>
           <div className="pr-10">
             <button onClick={() => clearCart()}>

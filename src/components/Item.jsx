@@ -4,8 +4,20 @@ export default function Item(props) {
   const { id, img, title, price, category, stock, brand, description, genre } =
     props;
 
-  const stockBadgeColor = stock <= 15 ? "text-red-500" : "text-white";
-  const stockMessage = stock <= 15 ? "Low Stock" : "Stock";
+  const outOfStock = stock == 0;
+  let stockBadgeColor;
+  let stockMessage;
+
+  if (outOfStock) {
+    stockMessage = "Out of Stock";
+    stockBadgeColor = "text-red-500 font-extrabold";
+  } else if (stock <= 15) {
+    stockBadgeColor = "text-red-500";
+    stockMessage = `Low Stock: ${stock}`;
+  } else {
+    stockBadgeColor = "text-white";
+    stockMessage = `Stock: ${stock}`;
+  }
 
   return (
     <div className="group relative w-72 bg-slate-900  rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-out border border-gray-100 overflow-hidden flex flex-col">
@@ -18,9 +30,9 @@ export default function Item(props) {
         <div
           className={`absolute top-2 right-2 bg-black/70 backdrop-blur-sm ${stockBadgeColor} text-xs font-bold px-2 py-1 rounded-full`}
         >
-          {stockMessage}: {stock}
+          {stockMessage}
         </div>
-         <div
+        <div
           className={`absolute top-9 right-2 text-white bg-black/70 backdrop-blur-sm text-xs font-bold px-2 py-1 rounded-full`}
         >
           {genre}
@@ -31,7 +43,6 @@ export default function Item(props) {
         <h1 className="text-lg font-bold text-white leading-tight  line-clamp-2 min-h-12">
           {title} - <span className="text-cyan-400">{category}</span>
         </h1>
-      
 
         <div className="text-2xl font-black text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500">
           ${price}

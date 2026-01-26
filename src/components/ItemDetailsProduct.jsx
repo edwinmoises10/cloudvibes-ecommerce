@@ -21,16 +21,20 @@ export default function ItemDetailsProduct() {
     addItemToCart(productDetail, value)
   }
 
-
+  
 
   return (
     <>
       {productDetail.length === 0 ? (
         <LoadingUI />
       ) : (
+
+
+        
         <div className="flex justify-center items-center p-7">
           <div className="group relative w-200 bg-linear-to-b from-slate-900 via-slate-900 to-slate-950 rounded-2xl shadow-xl shadow-black/50 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 ease-out border border-slate-800 overflow-hidden flex flex-row-reverse justify-center items-center ">
             <div className="relative w-80 h-full overflow-hidden shrink-0">
+              
               <img
                 className="h-full w-full object-cover object-top"
                 src={productDetail.img}
