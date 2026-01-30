@@ -4,6 +4,9 @@
 ![React](https://img.shields.io/badge/React-v18-blue)
 ![Tailwind](https://img.shields.io/badge/Tailwind-v3-38bdf8)
 ![Firebase](https://img.shields.io/badge/Firebase-Firestore-orange)
+![Vercel](https://img.shields.io/badge/Vercel-Deployed-black)
+
+> 🚀 **Live Demo:** [Visitar CloudVibes en Producción](https://cloudvibes-ecommerce-asfb.vercel.app)
 
 **CloudVibes** es una plataforma de comercio electrónico SPA (Single Page Application) especializada en videojuegos. Desarrollada con el ecosistema de **React** y estilizada con **Tailwind CSS**, integra una arquitectura *serverless* mediante **Firebase** para la gestión de datos en tiempo real y persistencia de stock.
 
