@@ -15,12 +15,12 @@ import products from "./products";
 import Swal from "sweetalert2";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDum_2FucLYEb_w5947HPGiExtodFRfZAE",
+  apiKey: import.meta.env.VITE_FIREBASE_APIKEY,
   authDomain: "cloudvibes-ecommerce.firebaseapp.com",
   projectId: "cloudvibes-ecommerce",
   storageBucket: "cloudvibes-ecommerce.firebasestorage.app",
   messagingSenderId: "692482704960",
-  appId: "1:692482704960:web:2fc08e3b325a5fd23a41a5",
+  appId: import.meta.env.VITE_FIREBASE_APPID,
 };
 
 const app = initializeApp(firebaseConfig);
