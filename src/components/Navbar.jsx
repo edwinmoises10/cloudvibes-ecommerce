@@ -100,7 +100,7 @@ export default function Navbar() {
               <img
                 src={logo}
                 alt="CloudVibes Logo"
-                className="h-12 w-auto md:h-16 lg:h-20 object-contain transition-all" 
+                className="h-50 w-60 md:h-16 lg:h-20 object-contain transition-all" 
               />
             </NavLink>
           </div>

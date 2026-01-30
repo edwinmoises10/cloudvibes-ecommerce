@@ -49,32 +49,48 @@ export default function Checkout() {
     handleChange(e);
   };
 
-  function handleReset() {
-    setFormData({
-      username: "",
-      phone: "",
-      email: "",
-    });
+
+  function handle_Reset() {
+    if (!formData.username && !formData.email && !formData.phone) {
+      return;
+    }
+
+    if (formData.username || formData.email || formData.phone) {
+      Swal.fire({
+        title: "Are you sure? ",
+        text: "Your will be delete.",
+        icon: "warning",
+        showDenyButton: true,
+        confirmButtonColor: "#F59E0B", // Rojo para acciones destructivas (Reset/Delete)
+        cancelButtonColor: "#2563EB",
+        confirmButtonText: "Yes, clear it!",
+        cancelButtonText: "Cancel",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setFormData({
+            username: "",
+            phone: "",
+            email: "",
+          });
+        }
+      });
+      return;
+    }
   }
 
-
-
   function handleCheckout() {
-
-    if(!formData.username || !formData.email||!formData.phone){
-        Swal.fire({
-          title: "Missing Data ",
-          text: `Please Fill in all fields to continue. `,
-          icon: "error",
-        });
-        return
+    if (!formData.username || !formData.email || !formData.phone) {
+      Swal.fire({
+        title: "Missing Data ",
+        text: `Please Fill in all fields to continue. `,
+        icon: "error",
+      });
+      return;
     }
 
     if (cart.length === 0) {
       Swal.fire({
-        title: "Cart is Empty", // Corregido: 'Car' es auto, 'Cart' es carrito
-        text: "You haven't added any items yet.",
-        icon: "info",
+        title: "Cart is Empty",
         showDenyButton: true,
         showConfirmButton: false,
         denyButtonColor: "#28a745",
@@ -208,7 +224,7 @@ export default function Checkout() {
         </div>
 
         {/* {<Form />} */}
-        <div className="flex justify-center items-center w-full p-4">
+        <div className="pt-9 flex justify-center items-center w-full p-4">
           <div className="bg-linear-to-b from-slate-900 via-slate-700 to-slate-500 rounded-2xl w-full max-w-lg p-6 flex flex-col shadow-2xl">
             <h2 className="mb-6 text-end text-1xl font-light text-white uppercase tracking-widest drop-shadow-md">
               Checkout 🚀
@@ -274,7 +290,7 @@ export default function Checkout() {
                   <span>Buy</span>
                 </button>
                 <button
-                  onClick={handleReset}
+                  onClick={handle_Reset}
                   type="reset"
                   className="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-purple-900/20 transition-all active:scale-95 "
                 >
@@ -292,13 +308,13 @@ export default function Checkout() {
           >
             <span>Finalizar Compra</span>
           </button> */}
-          <div className="">
+          {/* <div className="">
             <button onClick={() => clearCart()}>
               <svg className="w-5 h-5 group fill-gray-500">
                 <use href="/sprite.svg#trash" />
               </svg>
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
