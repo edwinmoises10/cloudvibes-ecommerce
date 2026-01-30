@@ -89,6 +89,7 @@ export async function createBuyOrder(buyOrderData) {
   // write data in firestore
   const collectionRef = collection(db, "orders");
   const docRef = await addDoc(collectionRef, buyOrderData);
+  
   Swal.fire({
     title: "Thanks for your Order!",
     text: `Order: ${docRef.id} `,
