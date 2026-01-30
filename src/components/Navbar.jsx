@@ -4,7 +4,6 @@ import { Search, Menu, X, ChevronDown } from "lucide-react"; // Añadidos iconos
 import CartWidget from "./CartWidget";
 import logo from "../assets/logoCloudVibesGame.png";
 
-// Constantes de datos para evitar código repetitivo y facilitar mantenimiento
 const GENRES = [
   "Action-Adventure", "Shooter", "RPG", "Horror", "Fighting", 
   "Sports", "Racing", "Simulation", "Platformer", "Roguelike", 
@@ -108,8 +107,7 @@ export default function Navbar() {
 
           {/* --- RIGHT SECTION: Cart --- */}
           <div className="flex items-center gap-4">
-            {/* Search Placeholder (Hidden on small mobile if needed, or toggleable) */}
-            {/* <div className="hidden md:block">...SearchInput...</div> */}
+         
 
             <div className="pl-4 lg:pl-12 lg:border-l border-gray-200">
               <CartWidget />
@@ -118,10 +116,9 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* --- MOBILE DRAWER (Overlay) --- */}
-      {/* Lógica: Si isMobileMenuOpen es true, mostramos el overlay y el menú */}
+
       <div 
-        className={`fixed inset-0 z-[60] lg:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-60 lg:hidden transition-opacity duration-300 ${
           isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}
       >

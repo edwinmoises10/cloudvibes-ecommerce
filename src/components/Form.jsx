@@ -17,10 +17,33 @@ export default function Form() {
     event.preventDefault();
   }
 
-  const [inputValue, setInputValue] = useState("");
-  const [inputEmail, setInputEmail] = useState("");
+  const [formData, setFormData] = useState({
+    username: "",
+    phone: "",
+    email: "",
+  });
 
-  const [formData, setFormData] = useState({});
+  console.log(formData);
+
+  function handleChange(event) {
+    const { value, name } = event.target;
+    const newFormatData = { ...formData };
+    newFormatData[name] = value;
+    setFormData(newFormatData);
+  }
+
+  const handleUpperCase = (e) => {
+    e.target.value = e.target.value.toUpperCase();
+    handleChange(e);
+  };
+
+  function handleReset() {
+    setFormData({
+      username: "",
+      phone: "",
+      email: "",
+    });
+  }
 
   return (
     <div className="flex justify-center items-center w-full p-4">
@@ -34,10 +57,8 @@ export default function Form() {
           <label htmlFor="username" className={labelClasses}>
             <span className={labelTextClasses}>Full Name:</span>
             <input
-              value={inputValue}
-              onChange={(e) => {
-                setInputValue(e.target.value.toUpperCase());
-              }}
+              value={formData.username}
+              onChange={handleUpperCase}
               type="text"
               className={inputClasses}
               name="username"
@@ -51,10 +72,8 @@ export default function Form() {
           <label htmlFor="email" className={labelClasses}>
             <span className={labelTextClasses}>Email:</span>
             <input
-              value={inputEmail}
-              onChange={(e) =>
-                setInputEmail(e.target.value.toLocaleUpperCase())
-              }
+              value={formData.email}
+              onChange={handleUpperCase}
               type="email"
               className={inputClasses}
               name="email"
@@ -68,6 +87,8 @@ export default function Form() {
           <label htmlFor="phone" className={labelClasses}>
             <span className={labelTextClasses}>Phone:</span>
             <input
+              value={formData.phone}
+              onChange={handleChange}
               type="tel"
               className={inputClasses}
               name="phone"
@@ -78,12 +99,21 @@ export default function Form() {
           </label>
           {/* date */}
           <span className={labelText}>{Date()}</span>
-          <button
-            type="submit"
-            className="bg-sky-700 hover:bg-sky-900 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-purple-900/20 transition-all active:scale-95 "
-          >
-            <span>Buy</span>
-          </button>
+          <div className="flex flex-row justify-around">
+            <button
+              type="submit"
+              className="bg-sky-700 hover:bg-sky-900 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-purple-900/20 transition-all active:scale-95 "
+            >
+              <span>Buy</span>
+            </button>
+            <button
+              onClick={handleReset}
+              type="reset"
+              className="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-purple-900/20 transition-all active:scale-95 "
+            >
+              <span>Reset Form</span>
+            </button>
+          </div>
         </form>
       </div>
     </div>

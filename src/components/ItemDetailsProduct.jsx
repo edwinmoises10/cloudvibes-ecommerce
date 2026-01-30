@@ -31,12 +31,12 @@ export default function ItemDetailsProduct() {
 
 
         
-        <div className="flex justify-center items-center p-7">
-          <div className="group relative w-200 bg-linear-to-b from-slate-900 via-slate-900 to-slate-950 rounded-2xl shadow-xl shadow-black/50 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 ease-out border border-slate-800 overflow-hidden flex flex-row-reverse justify-center items-center ">
-            <div className="relative w-80 h-full overflow-hidden shrink-0">
+        <div className="flex justify-center items-center p-7  ">
+          <div className="group relative w-200 bg-linear-to-b from-slate-900 via-slate-900 to-slate-950 rounded-2xl shadow-xl shadow-black/50 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 ease-out border border-slate-800 overflow-hidden flex flex-row-reverse  justify-center items-center  ">
+            <div className=" relative w-80 h-full overflow-hidden shrink-0">
               
               <img
-                className="h-full w-full object-cover object-top"
+                className="  h-full w-full object-cover object-top"
                 src={productDetail.img}
                 alt={productDetail.title}
               />
@@ -46,8 +46,8 @@ export default function ItemDetailsProduct() {
               </div>
             </div>
 
-            <div className="w-400">
-              <div className="p-6 flex flex-col gap-3 flex-1 bg-linear-to-b from-slate-900 via-slate-900 to-slate-950">
+            <div className=" w-400">
+              <div className=" p-6 flex flex-col gap-3 flex-1 bg-linear-to-b from-slate-900 via-slate-900 to-slate-950">
                 <h1 className="text-4xl font-bold text-white leading-tight line-clamp-2 min-h-12 tracking-wide">
                   {productDetail.title}
                 </h1>
